@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wishlist</title>
+</head>
+<body>
+
+  <form method="get" action="/wishlist/search">
+    <!-- サーチメソッドを呼び出すので＜％＞いらない -->
+    <label for ='search'></label>
+    <input type ='text' name="wish" id ="search">
+    <button class ="search-btn">検索</button>
+  </form>
+
+  <p>har<%=title%></p>
+  <% for (let i in content){ %>
+  <% let obj = content[i] %>
+  <!-- 全ての行をfor文で標示させる -->
+  <h1 class="id"><%= obj.id %> aa</h1>
+ <% }%> 
+
+ <!-- create処理 -->
+ <form method="post" action="/wishlist">
+  <label for ="wish">やりたいこ</label>
+  <input type="text" name="wish" id ="wish">
+  <input type="text" name="memo" id ="memo">
+  <input type="text" name="finish" id ="finish">
+  <button class ="add-btn">保存</button>
+ </form>
+
+ <!-- delete処理 -->
+  <form method="post" action="/wishlist/id">
+  <label for ="delete">delete</label>
+  <input type="text" name="id" id ="id">
+  
+  <button class ="add-btn">削除</button>
+ </form>
+<!-- <script>
+  //updateでは非同期処理やDOM操作が必要
+  async function deletewish(uid){
+    const ida = document.getElementById("id").value
+    const res = await fetch("http://localhost:3000/wishlist/" + uid,{
+      method: "DELETE"
+    })
+    window.location.href = "/wishlist"
+    
+  } -->
+</script>
+</body>
+</html>
